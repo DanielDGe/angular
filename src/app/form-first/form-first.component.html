@@ -1,0 +1,66 @@
+<p>form-first works!</p>
+
+<p>Nombre</p>
+<input type="text" name="" [value]="defaultName"> <!--Property Binding []-->
+
+
+<p>{{user}}</p>
+<input [(ngModel)]="user" type="text" name="" [value]="defaultEmail"> <!--ngModel Two way databinding-->
+
+
+<p>Email</p>
+<input #email type="text" name="" [value]="defaultEmail"> <!--Template Reference Variables con # se especifica la variable-->
+
+<hr>
+
+<button mat-raised-button color="primary" (click)="onSendForm(email.value)">Enviar formulario</button>
+
+<br><br>
+
+<button (click)="onDefaultForm()">Formulario por defecto</button>
+
+
+<!--Interpolacion, opcion dinamica de angular para mostrar cambios o reaccionar a eventos-->
+
+<p>{{ status}}</p> 
+
+
+<!--Directiva ngIf, nos mostrara una cosa u otra dependiendo si es true o false-->
+<div *ngIf="displayPassword; then showPassword; else hidePassword">
+</div>
+
+<ng-template #showPassword>
+    <p>12345678</p>
+</ng-template>
+
+<ng-template #hidePassword>
+    <p>Password escondida</p>
+</ng-template>
+
+
+<!--Directiva ngSwitch-->
+
+<div [ngSwitch]="lightStatus">
+    <div *ngSwitchCase = "'GREEN'">VERDE</div>
+    <div *ngSwitchCase = "'RED'">ROJO</div>
+    <div *ngSwitchCase = "'YELLOW'">AMARILLO</div>
+    <div *ngSwitchDefault>Opcion no valida</div>
+</div>
+
+
+<!--Directiva For-->
+<div *ngFor="let nombre of names">
+    <p>{{nombre}}</p>
+</div>
+
+<!--Decodador @Input-->
+<p>{{messageFromParent}}</p>
+
+<!--Decorador @Output-->
+<button (click)="onSendEvent()">Enviar evento</button>
+
+
+<!--Error Http message-->
+<p>{{errorMessage}}</p>
+
+
